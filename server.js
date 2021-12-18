@@ -2,9 +2,10 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const routes = require('./routes/index');
-const mongoose  = require('mongoose');
 
+const mongoose  = require('mongoose');
+const payerRoute = require('./routes/payerRoute.js');
+const spendRoute = require('./routes/spendRoute.js');
 
 // middleware
 
@@ -23,12 +24,14 @@ mongoose.set("debug", true);
 // send a get
 
 // app.get('/', (req,res) => {
-//     res.send('hello there go to /test')
+//     res.send('hello there')
 // })
 
 // routes
 
-app.use('/', routes);
+app.use('/api/payer', payerRoute);
+app.use('/api/spend', spendRoute);
+
 
 
 // server listen
