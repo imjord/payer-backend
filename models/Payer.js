@@ -19,10 +19,9 @@ const PayerSchema = new mongoose.Schema({
 
 // create mongoose model 
 
-const Payer = mongoose.model('Payer', PayerSchema);
+module.exports = mongoose.model('Payer', PayerSchema);
 
 
 
 // export model to be used in routes 
 
-module.exports = Payer;
