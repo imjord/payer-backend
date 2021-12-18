@@ -24,6 +24,17 @@ const payerController = {
         }).catch(err => {
             res.status(500).json(err);
         })
+    },
+    // update points 
+    takePay(req,res){
+        Payer.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+        .then(data => {
+          if (!data) {
+            res.status(404).json({ message: 'No payer found with this id!' });
+            return;
+          }
+          res.json(data);
+        })
     }
     
 }
