@@ -15,7 +15,11 @@ const payerController = {
     },
     // create payer
     createPayer(req,res){
-        Payer.create(req.body).then(data => {
+        Payer.create({
+            payer: req.body.payer,
+            points: req.body.points
+        }
+        ).then(data => {
             res.json(data);
         }).catch(err => {
             res.status(500).json(err);
